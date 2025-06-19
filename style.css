@@ -1,0 +1,183 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom right, #ffe8f0, #fff0f7);
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  color: #5e2c4d;
+  overflow-x: hidden;
+  display: block;
+}
+
+#app-wrapper {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.25);
+  border-radius: 20px;
+  user-select: none;
+}
+
+header {
+  background: #ffb3d9;
+  color: #fff;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.discord-link img {
+  width: 36px;
+  height: 36px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  transition: transform 0.2s ease;
+}
+
+.discord-link img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+main {
+  flex-grow: 1;
+  padding: 1rem 2rem;
+  overflow-y: auto;
+}
+
+.search-bar-container {
+  text-align: center;
+  margin: 1rem auto 0.5rem auto;
+}
+
+#search-bar {
+  width: 90%;
+  max-width: 500px;
+  padding: 0.7rem 1rem;
+  border: 2px solid #ffa5cc;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  box-shadow: 0 3px 10px rgba(255, 105, 180, 0.15);
+  transition: 0.2s ease;
+}
+
+#search-bar:focus {
+  border-color: #ff6fa5;
+  box-shadow: 0 3px 15px rgba(255, 105, 180, 0.25);
+}
+
+.card {
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  border-radius: 16px;
+  background: #fff0f7;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.15);
+  font-weight: 500;
+  color: #5e2c4d;
+  line-height: 1.5;
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #d63384;
+}
+
+.card .value {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.card p {
+  margin: 0.2rem 0;
+  font-size: 1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #ffd6eb;
+  color: #7a3360;
+  font-weight: 500;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  user-select: none;
+}
+
+.wfl-link {
+  display: inline-block;
+  margin-top: 0.7rem;
+  color: #d63384;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.wfl-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.4rem;
+    max-width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  header {
+    padding: 0.8rem 1rem;
+    flex-wrap: wrap;
+  }
+  .discord-link {
+    margin-left: auto;
+  }
+  main {
+    padding: 1rem 1rem;
+  }
+  .discord-link img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.pet-image {
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  display: block;
+  margin: 0 auto 0.75rem auto;
+  border-radius: 16px;
+  object-fit: contain;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+}
+
+#value {
+  text-align: center;
+  padding: 0.3rem;
+  color: #7a3360;
+  font-weight: 500;
+  user-select: none;
+}
+  
