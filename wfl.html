@@ -3,21 +3,22 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>BlossomGarden Wfl</title>
+<title>BlossomGarden WFL Calculator</title>
 <style>
-  /* Blossom theme */
+  /* Base body and background */
   html, body {
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
-    background: linear-gradient(to bottom right, #ffe8f0, #fff0f7);
+    background: linear-gradient(135deg, #ffe8f0 0%, #fff0f7 100%);
     font-family: 'Poppins', 'Segoe UI', sans-serif;
     color: #5e2c4d;
     overflow-x: hidden;
     display: block;
   }
 
+  /* Wrapper container */
   #app-wrapper {
     width: 100%;
     max-width: 900px;
@@ -25,75 +26,89 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: white;
+    background: #fff;
     box-shadow: 0 0 20px rgba(255, 105, 180, 0.25);
     border-radius: 20px;
     user-select: none;
+    padding-bottom: 80px; /* room for FAB */
   }
 
+  /* Header styling matching original index.html */
   header {
-    background: #ffb3d9;
-    color: #fff;
-    padding: 1rem 1.5rem;
+    background: linear-gradient(90deg, #ffb3d9 0%, #ffb3d9 100%);
+    color: white;
+    padding: 1.1rem 2rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow:
+      0 2px 8px rgba(255, 105, 180, 0.35),
+      inset 0 -3px 6px rgba(255, 255, 255, 0.3);
+    font-weight: 900;
+    font-size: 2.2rem;
+    letter-spacing: 0.07em;
+    user-select: none;
   }
 
-  header h1 {
-    margin: 0;
-    font-size: 2rem;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-
+  /* Main content */
   main {
     flex-grow: 1;
     padding: 1rem 2rem;
     overflow-y: auto;
   }
 
+  /* Slots wrapper */
   .slots-wrapper {
     display: flex;
     justify-content: space-around;
     margin: 1rem 0;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 20px;
   }
 
+  /* Individual slots container */
   .slots-container {
     background: #fff0f7;
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.15);
-    padding: 1rem;
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(255, 105, 180, 0.18);
+    padding: 1.3rem 1.7rem;
     width: 280px;
-    min-height: 300px;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
   }
 
+  /* Container headings */
   .slots-container h2 {
     margin-top: 0;
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: #d63384;
+    font-weight: 900;
+    font-size: 1.65rem;
+    color: #e51a78; /* deeper pink */
     text-align: center;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.08em;
+    user-select: none;
   }
 
+  /* Slots grid */
   .slots {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
     justify-content: center;
+    flex-grow: 1;
+    overflow-y: auto;
   }
 
+  /* Single slot style */
   .slot {
     background: white;
     width: 60px;
     height: 60px;
-    border-radius: 12px;
-    border: 2px solid #ffa5cc;
+    border-radius: 14px;
+    border: 2.5px solid #ff7db0;
     color: #d63384;
     font-weight: 700;
     font-size: 2rem;
@@ -102,28 +117,34 @@
     cursor: pointer;
     position: relative;
     user-select: none;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 3px 7px rgba(255, 105, 180, 0.12);
   }
 
-  .slot:hover {
-    border-color: #ff6fa5;
+  .slot:hover,
+  .slot:focus {
+    border-color: #ff4896;
+    box-shadow: 0 0 12px 2px rgba(255, 72, 150, 0.45);
+    outline: none;
   }
 
+  /* Pet images inside slot */
   .slot img {
     max-width: 100%;
     max-height: 100%;
-    border-radius: 12px;
+    border-radius: 14px;
     object-fit: contain;
   }
 
+  /* Remove button inside slot */
   .remove-btn {
     position: absolute;
-    top: -6px;
-    right: -6px;
-    background: #ff6fa5;
+    top: -7px;
+    right: -7px;
+    background: #ff4a8a;
     border-radius: 50%;
     width: 18px;
     height: 18px;
@@ -134,25 +155,34 @@
     text-align: center;
     cursor: pointer;
     user-select: none;
+    box-shadow: 0 0 6px rgba(255, 72, 150, 0.7);
+    transition: background 0.2s ease;
   }
 
-  .remove-btn:hover {
-    background: #d63384;
+  .remove-btn:hover,
+  .remove-btn:focus {
+    background: #e51a78;
+    outline: none;
   }
 
+  /* Totals text */
   #total-you, #total-other {
     text-align: center;
-    font-weight: 700;
-    font-size: 1.5rem;
+    font-weight: 900;
+    font-size: 1.65rem;
     color: #7a3360;
-    margin-top: 0.5rem;
+    margin-top: 0.9rem;
+    user-select: none;
   }
 
+  /* Result text */
   #result-text {
     text-align: center;
-    font-weight: 700;
-    font-size: 1.8rem;
-    margin-top: 1rem;
+    font-weight: 900;
+    font-size: 2.2rem;
+    margin: 1.4rem 0;
+    letter-spacing: 0.07em;
+    user-select: none;
   }
 
   .fair {
@@ -165,13 +195,14 @@
     color: #ff3860;
   }
 
+  /* Modal styles */
   #pet-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(94, 44, 77, 0.7);
+    background: rgba(94, 44, 77, 0.85);
     display: none;
     justify-content: center;
     align-items: center;
@@ -183,104 +214,137 @@
 
   #pet-modal .modal-content {
     background: white;
-    border-radius: 20px;
+    border-radius: 24px;
     width: 90%;
-    max-width: 450px;
+    max-width: 460px;
     max-height: 80vh;
     overflow-y: auto;
-    padding: 1rem 1.5rem 2rem;
-    box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
+    padding: 1.5rem 2rem 2.5rem;
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.45);
     position: relative;
   }
 
   #modal-close {
     position: absolute;
-    top: 10px;
-    right: 15px;
+    top: 14px;
+    right: 20px;
     background: transparent;
     border: none;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #d63384;
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: #e51a78;
     cursor: pointer;
+    user-select: none;
   }
-  #modal-close:hover {
-    color: #ff6fa5;
+  #modal-close:hover,
+  #modal-close:focus {
+    color: #ff4a8a;
+    outline: none;
   }
 
   #pet-search {
     width: 100%;
-    padding: 0.7rem 1rem;
-    border: 2px solid #ffa5cc;
-    border-radius: 12px;
-    font-size: 1rem;
+    padding: 0.85rem 1.2rem;
+    border: 2px solid #ff7db0;
+    border-radius: 14px;
+    font-size: 1.1rem;
     font-family: 'Poppins', sans-serif;
     outline: none;
-    box-shadow: 0 3px 10px rgba(255, 105, 180, 0.15);
-    transition: 0.2s ease;
-    margin-bottom: 1rem;
+    box-shadow: 0 4px 14px rgba(255, 105, 180, 0.25);
+    transition: 0.25s ease;
+    margin-bottom: 1.3rem;
   }
 
   #pet-search:focus {
-    border-color: #ff6fa5;
-    box-shadow: 0 3px 15px rgba(255, 105, 180, 0.25);
+    border-color: #ff4896;
+    box-shadow: 0 5px 20px rgba(255, 72, 150, 0.4);
   }
 
+  /* Pet item in modal */
   .pet-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    border: 2px solid #ffa5cc;
-    border-radius: 12px;
-    padding: 0.5rem 1rem;
-    margin-bottom: 0.8rem;
+    gap: 14px;
+    border: 2px solid #ff7db0;
+    border-radius: 14px;
+    padding: 0.6rem 1.3rem;
+    margin-bottom: 1rem;
     cursor: pointer;
     user-select: none;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.25s ease;
   }
 
   .pet-item:hover,
   .pet-item:focus {
-    border-color: #ff6fa5;
+    border-color: #ff4896;
     outline: none;
   }
 
   .pet-item img {
-    width: 50px;
-    height: 50px;
+    width: 54px;
+    height: 54px;
     object-fit: contain;
-    border-radius: 12px;
+    border-radius: 14px;
   }
 
   .pet-item p {
     margin: 0;
-    font-weight: 600;
-    color: #d63384;
+    font-weight: 700;
+    color: #e51a78;
   }
 
+  /* Footer styling */
   footer {
     text-align: center;
     padding: 1rem;
-    background: #ffd6eb;
-    color: #7a3360;
-    font-weight: 500;
+    background: #ffb3d9;
+    color: #fff;
+    font-weight: 600;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     user-select: none;
   }
 
+  /* FAB button style identical to original index.html */
+  .fab-button {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    background: linear-gradient(135deg, #ff7db0 0%, #ff4896 100%);
+    color: white;
+    font-weight: 900;
+    font-family: 'Poppins', sans-serif;
+    padding: 0.75rem 1.8rem;
+    border-radius: 34px;
+    box-shadow:
+      0 6px 15px rgba(255, 72, 150, 0.7),
+      inset 0 -3px 6px rgba(255, 255, 255, 0.3);
+    text-decoration: none;
+    font-size: 1.15rem;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .fab-button:hover,
+  .fab-button:focus {
+    background: linear-gradient(135deg, #ff4896 0%, #e51a78 100%);
+    box-shadow:
+      0 9px 22px rgba(255, 72, 150, 0.9),
+      inset 0 -4px 8px rgba(255, 255, 255, 0.45);
+    outline: none;
+  }
+
   /* Responsive */
   @media (max-width: 600px) {
-    header h1 {
-      font-size: 1.4rem;
-      max-width: 80%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
     header {
-      padding: 0.8rem 1rem;
-      flex-wrap: wrap;
+      font-size: 1.6rem;
+      padding: 1rem 1.3rem;
+      letter-spacing: 0.05em;
     }
     main {
       padding: 1rem 1rem;
@@ -293,9 +357,9 @@
 </style>
 </head>
 <body>
-<div id="app-wrapper">
+<div id="app-wrapper" role="main" aria-label="Blossom Garden WFL">
   <header>
-    <h1 style="font-size: 30px;">BlossomGarden Wfl</h1>
+    BlossomGarden WFL
   </header>
   <main>
     <div class="slots-wrapper">
@@ -311,7 +375,6 @@
         <div id="total-other" aria-live="polite" aria-atomic="true">0.00</div>
       </section>
     </div>
-
   </main>
 
   <!-- Pet selection modal -->
@@ -327,6 +390,9 @@
     Blossom Garden © 2025
   </footer>
 </div>
+
+<!-- FAB button to go back to index.html -->
+<a href="index.html" class="fab-button" aria-label="Go back to main page">Back</a>
 
 <script>
 (() => {
