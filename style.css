@@ -21,6 +21,7 @@ html, body {
   box-shadow: 0 0 20px rgba(255, 105, 180, 0.25);
   border-radius: 20px;
   user-select: none;
+  padding-bottom: 80px; /* Give space for FAB */
 }
 
 header {
@@ -83,34 +84,38 @@ main {
   box-shadow: 0 3px 15px rgba(255, 105, 180, 0.25);
 }
 
-.card {
-  padding: 1rem 1.5rem;
-  margin: 1rem 0;
-  border-radius: 16px;
-  background: #fff0f7;
-  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.15);
-  font-weight: 500;
-  color: #5e2c4d;
-  line-height: 1.5;
+#value-list {
+  margin-top: 1rem;
+  padding-bottom: 1rem;
 }
 
-.card h2 {
-  margin-top: 0;
-  margin-bottom: 0.3rem;
+.card {
+  padding: 0.8rem 1rem;
+  border-radius: 14px;
+  background: #fff0f7;
+  box-shadow: 0 3px 10px rgba(255, 105, 180, 0.12);
+  font-weight: 500;
+  color: #5e2c4d;
+  line-height: 1.4;
+  font-size: 0.95rem;
+}
+
+.card h3 {
+  margin: 0 0 0.5rem 0;
   font-weight: 700;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   color: #d63384;
 }
 
 .card .value {
   font-weight: 600;
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
 }
 
 .card p {
   margin: 0.2rem 0;
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 footer {
@@ -137,6 +142,63 @@ footer {
   text-decoration: underline;
 }
 
+.pet-image {
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  display: block;
+  margin: 0 auto 0.75rem auto;
+  border-radius: 16px;
+  object-fit: contain;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+}
+
+#value {
+  text-align: center;
+  padding: 0.3rem;
+  color: #7a3360;
+  font-weight: 500;
+  user-select: none;
+}
+
+/* Tier headings style */
+#value-list h2 {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  /* no text-shadow */
+}
+
+/* FAB button fixed bottom-right */
+.fab-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #ff66a3, #ff3d81);
+  color: white;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  padding: 0.75rem 1.8rem;
+  border-radius: 28px;
+  box-shadow: 0 6px 15px rgba(255, 105, 180, 0.5);
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.fab-button:hover,
+.fab-button:focus {
+  background: linear-gradient(135deg, #ff3d81, #ff1f66);
+  box-shadow: 0 8px 20px rgba(255, 40, 120, 0.7);
+  outline: none;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   header h1 {
@@ -160,24 +222,10 @@ footer {
     width: 30px;
     height: 30px;
   }
+  .fab-button {
+    bottom: 15px;
+    right: 15px;
+    padding: 0.65rem 1.4rem;
+    font-size: 1rem;
+  }
 }
-
-.pet-image {
-  width: 100%;
-  max-width: 240px;
-  height: auto;
-  display: block;
-  margin: 0 auto 0.75rem auto;
-  border-radius: 16px;
-  object-fit: contain;
-  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
-}
-
-#value {
-  text-align: center;
-  padding: 0.3rem;
-  color: #7a3360;
-  font-weight: 500;
-  user-select: none;
-}
-  
