@@ -94,3 +94,12 @@ fetch("https://raw.githubusercontent.com/UNKNOWN001F/valuesjson/main/mi.json")
     document.getElementById("value-list").innerHTML = "<p>Failed to load data.</p>";
     console.error(err);
   });
+// Modal logic (make sure this runs after DOM is ready)
+window.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("welcome-modal");
+  const closeBtn = document.getElementById("close-modal");
+
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+});
