@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,20 +21,32 @@
         <input type="text" id="search-bar" placeholder="Search pets..." />
       </div>
       <p id="value">1 Value = 1T Shackles</p>
-      <!-- Removed old WFL link -->
       <div id="value-list"></div>
     </main>
 
     <footer>
       <p>Last Updated: <span id="last-updated"></span></p>
       <p># All values are set by BlossomGarden Value Team</p>
-
       <p>Blossom Garden © 2025</p>
     </footer>
   </div>
 
   <!-- Floating FAB Button -->
   <a href="wfl.html" class="fab-button" id="wfl-button" aria-label="Back">WFL Calculator</a>
+
+  <!-- Modal Dialog -->
+  <div id="welcome-modal" class="modal-overlay">
+    <div class="modal">
+      <h2>BlossomGarden Values</h2>
+      <p>
+        Those are average prices for pets when trading with people who know recent demands and their worth.
+        However, when dealing with those who don’t understand pet values and rely on happy value, you can
+        get pets at lower prices. The purpose of creating this website is to help you avoid accepting underpaid
+        offers and thinking you made a profit from trading.
+      </p>
+      <button id="close-modal">Got it!</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
